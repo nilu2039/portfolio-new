@@ -1,19 +1,16 @@
 import { Box, Flex, HStack, Text, VStack } from "@chakra-ui/react"
 import Image from "next/image"
 import React from "react"
-import Typewriter from "typewriter-effect"
-
-import { RiReactjsFill } from "react-icons/ri"
-import { DiMongodb } from "react-icons/di"
-import { SiExpress, SiGraphql } from "react-icons/si"
-import { FaNodeJs } from "react-icons/fa"
-
 import {
-  AiOutlineInstagram,
   AiOutlineGithub,
+  AiOutlineInstagram,
   AiOutlineLinkedin,
 } from "react-icons/ai"
-import Neumorphic from "./Neumorphic"
+import { DiMongodb } from "react-icons/di"
+import { RiReactjsFill } from "react-icons/ri"
+import { SiExpress, SiGraphql } from "react-icons/si"
+import Typewriter from "typewriter-effect"
+import ItemCard from "./ItemCard"
 
 const HomeHeader = () => {
   return (
@@ -44,10 +41,18 @@ const HomeHeader = () => {
             <br />
             <strong style={{ color: "rgba(101, 99, 255, 1)" }}>Mandal a</strong>
           </Text>
-          <Box fontSize={45} fontFamily="Montserrat" fontWeight="800">
+          <Box
+            fontSize={{
+              base: 35,
+              sm: 44,
+              xl: 50,
+            }}
+            fontFamily="Montserrat"
+            fontWeight="800"
+          >
             <Typewriter
               options={{
-                // loop: true,
+                loop: true,
                 skipAddStyles: true,
                 delay: 50,
               }}
@@ -69,48 +74,53 @@ const HomeHeader = () => {
             px={10}
             py={5}
             noOfLines={2}
+            textAlign="center"
             fontFamily="Montserrat"
             fontWeight="400"
             fontSize={15}
             mt={5}
+            mb={{
+              base: 10,
+              sm: 5,
+            }}
           >
             I am a Full Stack Software Developer, i specialize in Web & Mobile
             App Development.
           </Text>
         </Box>
         <VStack>
-          <Text fontSize={15} mb={2} mr="auto" fontFamily="Montserrat">
+          <Text fontSize={15} fontWeight="500" mb={2} fontFamily="Montserrat">
             FIND ME
           </Text>
           <HStack gap={5} pb={5}>
-            <Neumorphic p={3}>
+            <ItemCard label="Instagram">
               <AiOutlineInstagram color="#000" size={40} />
-            </Neumorphic>
-            <Neumorphic p={3}>
+            </ItemCard>
+            <ItemCard label="GitHub">
               <AiOutlineGithub color="#000" size={40} />
-            </Neumorphic>
-            <Neumorphic p={3}>
+            </ItemCard>
+            <ItemCard label="LinkedIn">
               <AiOutlineLinkedin color="#000" size={40} />
-            </Neumorphic>
+            </ItemCard>
           </HStack>
         </VStack>
         <VStack pt={10}>
-          <Text fontSize={15} mb={2} mr="auto" fontFamily="Montserrat">
+          <Text fontWeight="500" fontSize={15} mb={2} fontFamily="Montserrat">
             BEST SKILL ON
           </Text>
           <HStack gap={5} pb={5}>
-            <Neumorphic p={3}>
+            <ItemCard label="React & React Native (Frontend)">
               <RiReactjsFill color="#00c4e4" size={40} />
-            </Neumorphic>
-            <Neumorphic p={3}>
+            </ItemCard>
+            <ItemCard label="MongoDB (Backend)">
               <DiMongodb color="#0ead2b" size={40} />
-            </Neumorphic>
-            <Neumorphic p={3}>
-              <SiExpress color="#000" size={40} />
-            </Neumorphic>
-            <Neumorphic p={3}>
+            </ItemCard>
+            <ItemCard label="ExpressJS (Backend)">
+              <SiExpress size={40} />
+            </ItemCard>
+            <ItemCard label="GraphQL (Backend & Frontend)">
               <SiGraphql color="#d932a2" size={40} />
-            </Neumorphic>
+            </ItemCard>
           </HStack>
         </VStack>
       </VStack>

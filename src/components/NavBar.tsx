@@ -59,7 +59,7 @@ const NavBar = () => {
         px={5}
         py={4}
         borderBottomWidth={3}
-        borderBottomColor="rgba(256, 256,256. 0.8)"
+        borderBottomColor="rgba(256, 256,256, 0.7)"
       >
         <Text fontSize={25} color={"#000"} ml="1">
           Nilanjan
@@ -116,7 +116,13 @@ const NavBar = () => {
               <NavBarContent content="ABOUT" />
             </VStack>
             <VStack mt={20}>
-              <Text mb={5} color={"#000"}>
+              <Text
+                fontFamily="Montserrat"
+                fontWeight="600"
+                mb={5}
+                fontSize={17}
+                color={"#000"}
+              >
                 FIND ME ON
               </Text>
               <HStack
