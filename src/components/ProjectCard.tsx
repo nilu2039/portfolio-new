@@ -9,6 +9,7 @@ interface ProjectCardProps {
   desc: string
   width: number
   height: number
+  href?: string
 }
 
 const ProjectCard: React.FC<ProjectCardProps> = ({
@@ -17,6 +18,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   desc,
   width,
   height,
+  href,
 }) => {
   const [isCardHovered, setIsCardHovered] = useState(false)
   return (
@@ -28,47 +30,50 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
         bg="black"
         color="white"
       >
-        <MotionBox
-          display="flex"
-          flexDirection="column"
-          justifyContent="center"
-          alignItems="center"
-          cursor="pointer"
-          gap={2}
-          whileHover={{
-            scale: 1.05,
-            backgroundColor: "rgba(101, 99, 255, 0.1)",
-          }}
-          mt={5}
-          //   py={5}
-          height="60vh"
-          width={{
-            base: "85vw",
-            sm: "85vw",
-            md: "45vw",
-          }}
-          borderRadius="lg"
-          onMouseOver={() => setIsCardHovered(true)}
-          onMouseOut={() => setIsCardHovered(false)}
-          bg="#eee"
-          bgGradient={`${
-            !isCardHovered ? "linear(to-br, #ecf0f3 , #fff)" : ""
-          }`}
-          boxShadow="-3.3px -3.3px 3px #fff, 5px 5px 5.2px rgba(174, 174, 192, 0.5)"
-        >
-          <Image src={image} width={width} height={height} />
-          <Text
-            color={"rgba(101, 99, 255, 1)"}
-            fontFamily={"Montserrat"}
-            fontSize={20}
-            fontWeight="600"
+        <a href={href} target="_blank" style={{ textDecoration: "none" }}>
+          <MotionBox
+            display="flex"
+            flexDirection="column"
+            justifyContent="center"
+            alignItems="center"
+            cursor="pointer"
+            gap={2}
+            whileHover={{
+              scale: 1.05,
+              backgroundColor: "rgba(101, 99, 255, 0.1)",
+            }}
+            whileTap={{ scale: 0.9 }}
+            mt={5}
+            //   py={5}
+            height="60vh"
+            width={{
+              base: "85vw",
+              sm: "85vw",
+              md: "45vw",
+            }}
+            borderRadius="lg"
+            onMouseOver={() => setIsCardHovered(true)}
+            onMouseOut={() => setIsCardHovered(false)}
+            bg="#eee"
+            bgGradient={`${
+              !isCardHovered ? "linear(to-br, #ecf0f3 , #fff)" : ""
+            }`}
+            boxShadow="-3.3px -3.3px 3px #fff, 5px 5px 5.2px rgba(174, 174, 192, 0.5)"
           >
-            {title}
-          </Text>
-          <Text fontFamily={"Montserrat"} fontSize={18} fontWeight="500">
-            {desc}
-          </Text>
-        </MotionBox>
+            <Image src={image} width={width} height={height} />
+            <Text
+              color={"rgba(101, 99, 255, 1)"}
+              fontFamily={"Montserrat"}
+              fontSize={20}
+              fontWeight="600"
+            >
+              {title}
+            </Text>
+            <Text fontFamily={"Montserrat"} fontSize={18} fontWeight="500">
+              {desc}
+            </Text>
+          </MotionBox>
+        </a>
       </Tooltip>
     </Box>
   )

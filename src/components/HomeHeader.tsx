@@ -157,14 +157,20 @@ const HomeHeader = () => {
               FIND ME
             </Text>
             <HStack gap={5} pb={5}>
-              <ItemCard label="Instagram">
-                <AiOutlineInstagram color="#000" size={40} />
-              </ItemCard>
-              <ItemCard label="GitHub">
+              <ItemCard href="https://github.com/nilu2039" label="GitHub">
                 <AiOutlineGithub color="#000" size={40} />
               </ItemCard>
-              <ItemCard label="LinkedIn">
+              <ItemCard
+                href="https://www.linkedin.com/in/nilanjan-mandal-a825961bb/"
+                label="LinkedIn"
+              >
                 <AiOutlineLinkedin color="#000" size={40} />
+              </ItemCard>
+              <ItemCard
+                href="https://www.instagram.com/nilanjan2039/"
+                label="Instagram"
+              >
+                <AiOutlineInstagram color="#000" size={40} />
               </ItemCard>
             </HStack>
           </Box>
@@ -173,16 +179,28 @@ const HomeHeader = () => {
               BEST SKILL ON
             </Text>
             <HStack gap={5} pb={5}>
-              <ItemCard label="React & React Native (Frontend)">
+              <ItemCard
+                href="https://reactjs.org/"
+                label="React & React Native (Frontend)"
+              >
                 <RiReactjsFill color="#00c4e4" size={40} />
               </ItemCard>
-              <ItemCard label="MongoDB (Backend)">
+              <ItemCard
+                href="https://www.mongodb.com/"
+                label="MongoDB (Backend)"
+              >
                 <DiMongodb color="#0ead2b" size={40} />
               </ItemCard>
-              <ItemCard label="ExpressJS (Backend)">
+              <ItemCard
+                href="https://expressjs.com/"
+                label="ExpressJS (Backend)"
+              >
                 <SiExpress size={40} />
               </ItemCard>
-              <ItemCard label="GraphQL (Backend & Frontend)">
+              <ItemCard
+                href="https://graphql.org/"
+                label="GraphQL (Backend & Frontend)"
+              >
                 <SiGraphql color="#d932a2" size={40} />
               </ItemCard>
             </HStack>

@@ -1,46 +1,17 @@
-import {
-  Box,
-  Drawer,
-  DrawerBody,
-  DrawerCloseButton,
-  DrawerContent,
-  DrawerHeader,
-  DrawerOverlay,
-  HStack,
-  Text,
-  useColorMode,
-  useDisclosure,
-  VStack,
-} from "@chakra-ui/react"
+import { Box, HStack, Text, useDisclosure } from "@chakra-ui/react"
+import React from "react"
+import { AiOutlineMenu } from "react-icons/ai"
 // import Link from "next/link"
-import { Link, animateScroll } from "react-scroll"
-import React, { useState } from "react"
-import {
-  AiOutlineGithub,
-  AiOutlineLinkedin,
-  AiOutlineMenu,
-  AiOutlineClose,
-} from "react-icons/ai"
-import { MotionBox, MotionText } from "./AnimatedComponents"
+import { animateScroll, Link } from "react-scroll"
+import DrawerCmp from "./DrawerCmp"
 import Neumorphic from "./Neumorphic"
 
 const NavBar = () => {
   const { isOpen, onOpen, onClose } = useDisclosure()
-  const [placement, _] = useState<"left" | "right">("left")
 
-  interface NavBarProps {
-    title: string
-    href: string
-  }
-
-  const NavBarContent: React.FC<NavBarProps> = ({ title, href }) => {
+  const NavText = ({ title, href }) => {
     return (
-      <MotionBox
-        py={4}
-        w={200}
-        whileHover={{ scale: 1.08 }}
-        whileTap={{ scale: 0.95 }}
-      >
+      <>
         {title !== "HOME" ? (
           <Link
             to={href}
@@ -48,46 +19,28 @@ const NavBar = () => {
             duration={500}
             style={{ textDecoration: "none" }}
           >
-            <MotionText
-              textAlign={"center"}
-              cursor={"pointer"}
-              // textDecoration="none"
-              textDecoration="inherit"
-              color="#000"
-              // bg="red"
-              whileHover={{ backgroundColor: "rgba(101, 99, 255, 0.5)" }}
-              p={2}
-              borderRadius="lg"
-              px={10}
+            <Text
+              pl={20}
+              color={"rgba(101, 99, 255, 1)"}
+              fontFamily="Montserrat"
+              fontWeight="600"
             >
               {title}
-            </MotionText>
+            </Text>
           </Link>
         ) : (
-          <Box
-            onClick={() => animateScroll.scrollToTop()}
-            // to={href}
-            // smooth
-            // duration={500}
-            // style={{ textDecoration: "none" }}
-          >
-            <MotionText
-              textAlign={"center"}
-              cursor={"pointer"}
-              // textDecoration="none"
-              textDecoration="inherit"
-              color="#000"
-              // bg="red"
-              whileHover={{ backgroundColor: "rgba(101, 99, 255, 0.5)" }}
-              p={2}
-              borderRadius="lg"
-              px={10}
+          <Box onClick={() => animateScroll.scrollToTop()}>
+            <Text
+              pl={20}
+              color={"rgba(101, 99, 255, 1)"}
+              fontFamily="Montserrat"
+              fontWeight="600"
             >
               {title}
-            </MotionText>
+            </Text>
           </Box>
         )}
-      </MotionBox>
+      </>
     )
   }
 
@@ -119,9 +72,23 @@ const NavBar = () => {
         >
           Nilanjan
         </Text>
+        <HStack
+          pr={10}
+          display={{
+            base: "none",
+            sm: "none",
+            md: "flex",
+          }}
+        >
+          <NavText href="#" title={"HOME"} />
+          <NavText href="home_feature" title={"FEATURES"} />
+          <NavText href="home-projects" title={"PROJECTS"} />
+        </HStack>
         <Box
           display={{
-            lg: "none",
+            base: "block",
+            sm: "block",
+            md: "none",
           }}
           onClick={onOpen}
           cursor="pointer"
@@ -131,73 +98,7 @@ const NavBar = () => {
           </Neumorphic>
         </Box>
       </Box>
-      <Drawer placement={placement} onClose={onClose} isOpen={isOpen}>
-        <DrawerOverlay />
-        <DrawerContent bg="#f0f0f3">
-          <Box m={3} cursor="pointer">
-            <MotionBox
-              display="flex"
-              ml="auto"
-              onClick={onClose}
-              whileHover={{ scale: 1.15 }}
-              whileTap={{ scale: 0.9 }}
-              alignItems="center"
-              justifyContent="center"
-              w={8}
-              borderRadius="50%"
-              h={8}
-              boxShadow="-3.3px -3.3px 3px #fff, 5px 5px 5.2px rgba(174, 174, 192, 0.5)"
-              bg="#eeeeee"
-            >
-              <AiOutlineClose color="#000" size={20} />
-            </MotionBox>
-          </Box>
-          <DrawerHeader mt={-5} mb={-15} fontSize={25} color="#000">
-            Nilanjan Mandal
-          </DrawerHeader>
-          <DrawerHeader
-            color="rgba(0,0,0, 0.7)"
-            fontSize={15}
-            borderBottomColor="rgba(256, 256, 256, 1)"
-            borderBottomWidth="1px"
-          >
-            Full-Stack Developer
-          </DrawerHeader>
-          <DrawerBody>
-            <VStack mt={5}>
-              <NavBarContent href="#" title="HOME" />
-              <NavBarContent href="home_feature" title="FEATURES" />
-              <NavBarContent href="home-projects" title="PROJECTS" />
-              {/* <NavBarContent  href = "" title="ABOUT" /> */}
-            </VStack>
-            <VStack mt={20}>
-              <Text
-                fontFamily="Montserrat"
-                fontWeight="600"
-                mb={5}
-                fontSize={17}
-                color={"#000"}
-              >
-                FIND ME ON
-              </Text>
-              <HStack
-                alignItems="center"
-                justifyContent="space-around"
-                gap={12}
-                // mt={50}
-              >
-                <Neumorphic>
-                  <AiOutlineGithub color="#000" size={30} />
-                </Neumorphic>
-
-                <Neumorphic>
-                  <AiOutlineLinkedin color="#000" size={30} />
-                </Neumorphic>
-              </HStack>
-            </VStack>
-          </DrawerBody>
-        </DrawerContent>
-      </Drawer>
+      <DrawerCmp isOpen={isOpen} onOpen={onOpen} onClose={onClose} />
     </Box>
   )
 }

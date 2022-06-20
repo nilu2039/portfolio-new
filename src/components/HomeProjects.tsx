@@ -36,6 +36,7 @@ const HomeProjects = ({ projectsRef }) => {
         >
           <ProjectCard
             image="/web-programming.png"
+            href="https://github.com/nilu2039/codeitout"
             title="CodeItOut"
             desc="A full-fledged online code editor."
             width={300}
@@ -43,6 +44,7 @@ const HomeProjects = ({ projectsRef }) => {
           />
           <ProjectCard
             image="/background.png"
+            href="https://github.com/nilu2039/flask_yt_downloader"
             title="YT-Downloader"
             desc="Youtube video dwonloader"
             width={300}

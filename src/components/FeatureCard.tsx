@@ -22,7 +22,7 @@ const FeatureCard: React.FC<CardProps> = ({ title, content, icon }) => {
             scale: 1.02,
             backgroundColor: "rgba(101, 99, 255, 0.6)",
           }}
-          whileTap={{ scale: 0.9 }}
+          //   whileTap={{ scale: 0.9 }}
           cursor="pointer"
           height={200}
           onMouseOver={() => setIsCardHovered(true)}
