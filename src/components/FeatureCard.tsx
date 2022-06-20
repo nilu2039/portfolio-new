@@ -12,7 +12,7 @@ const FeatureCard: React.FC<CardProps> = ({ title, content, icon }) => {
   const [isCardHovered, setIsCardHovered] = useState(false)
 
   return (
-    <Box mt={10}>
+    <Box>
       <Flex direction="column">
         <MotionBox
           bg="#eee"
@@ -53,6 +53,12 @@ const FeatureCard: React.FC<CardProps> = ({ title, content, icon }) => {
               {title}
             </Text>
             <Text
+              px={{
+                base: 5,
+                sm: 5,
+                md: 15,
+                lg: 20,
+              }}
               fontSize={17.2}
               fontWeight={500}
               fontFamily="Montserrat"

@@ -12,6 +12,8 @@ import {
   useDisclosure,
   VStack,
 } from "@chakra-ui/react"
+// import Link from "next/link"
+import { Link, animateScroll } from "react-scroll"
 import React, { useState } from "react"
 import {
   AiOutlineGithub,
@@ -26,7 +28,12 @@ const NavBar = () => {
   const { isOpen, onOpen, onClose } = useDisclosure()
   const [placement, _] = useState<"left" | "right">("left")
 
-  const NavBarContent = ({ content = "HOME" }) => {
+  interface NavBarProps {
+    title: string
+    href: string
+  }
+
+  const NavBarContent: React.FC<NavBarProps> = ({ title, href }) => {
     return (
       <MotionBox
         py={4}
@@ -34,18 +41,52 @@ const NavBar = () => {
         whileHover={{ scale: 1.08 }}
         whileTap={{ scale: 0.95 }}
       >
-        <MotionText
-          textAlign={"center"}
-          cursor={"pointer"}
-          color="#000"
-          // bg="red"
-          whileHover={{ backgroundColor: "rgba(101, 99, 255, 0.5)" }}
-          p={2}
-          borderRadius="lg"
-          px={10}
-        >
-          {content}
-        </MotionText>
+        {title !== "HOME" ? (
+          <Link
+            to={href}
+            smooth
+            duration={500}
+            style={{ textDecoration: "none" }}
+          >
+            <MotionText
+              textAlign={"center"}
+              cursor={"pointer"}
+              // textDecoration="none"
+              textDecoration="inherit"
+              color="#000"
+              // bg="red"
+              whileHover={{ backgroundColor: "rgba(101, 99, 255, 0.5)" }}
+              p={2}
+              borderRadius="lg"
+              px={10}
+            >
+              {title}
+            </MotionText>
+          </Link>
+        ) : (
+          <Box
+            onClick={() => animateScroll.scrollToTop()}
+            // to={href}
+            // smooth
+            // duration={500}
+            // style={{ textDecoration: "none" }}
+          >
+            <MotionText
+              textAlign={"center"}
+              cursor={"pointer"}
+              // textDecoration="none"
+              textDecoration="inherit"
+              color="#000"
+              // bg="red"
+              whileHover={{ backgroundColor: "rgba(101, 99, 255, 0.5)" }}
+              p={2}
+              borderRadius="lg"
+              px={10}
+            >
+              {title}
+            </MotionText>
+          </Box>
+        )}
       </MotionBox>
     )
   }
@@ -56,12 +97,26 @@ const NavBar = () => {
         display="flex"
         justifyContent={"space-between"}
         alignItems="center"
+        onClick={() => animateScroll.scrollToTop()}
         px={5}
+        bg="#eee"
+        position="fixed"
+        as="header"
+        zIndex={100}
+        w="full"
+        cursor="pointer"
         py={4}
+        top={0}
         borderBottomWidth={3}
         borderBottomColor="rgba(256, 256,256, 0.7)"
       >
-        <Text fontSize={25} color={"#000"} ml="1">
+        <Text
+          fontFamily={"Poppins"}
+          fontWeight="500"
+          fontSize={25}
+          color={"#000"}
+          ml="1"
+        >
           Nilanjan
         </Text>
         <Box
@@ -110,10 +165,10 @@ const NavBar = () => {
           </DrawerHeader>
           <DrawerBody>
             <VStack mt={5}>
-              <NavBarContent content="HOME" />
-              <NavBarContent content="FEATURES" />
-              <NavBarContent content="PORTFOLIO" />
-              <NavBarContent content="ABOUT" />
+              <NavBarContent href="#" title="HOME" />
+              <NavBarContent href="home_feature" title="FEATURES" />
+              <NavBarContent href="home-projects" title="PROJECTS" />
+              {/* <NavBarContent  href = "" title="ABOUT" /> */}
             </VStack>
             <VStack mt={20}>
               <Text
