@@ -76,8 +76,8 @@ const HomeHeader = () => {
             noOfLines={2}
             textAlign="center"
             fontFamily="Montserrat"
-            fontWeight="400"
-            fontSize={15}
+            fontWeight="500"
+            fontSize={16}
             mt={5}
             mb={{
               base: 10,

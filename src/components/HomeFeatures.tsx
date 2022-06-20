@@ -1,5 +1,8 @@
 import { Box, Text, VStack } from "@chakra-ui/react"
 import React from "react"
+import { BsPhone } from "react-icons/bs"
+import { MdWeb } from "react-icons/md"
+import FeatureCard from "./FeatureCard"
 
 const HomeFeatures = () => {
   return (
@@ -32,6 +35,16 @@ const HomeFeatures = () => {
           </Text>
         </VStack>
       </Box>
+      <FeatureCard
+        title="Mobile Apps"
+        content="I develop fast and easy to use Android and iOS Mobile Applications with amazing UI and UX."
+        icon={<BsPhone color="#000" size={30} />}
+      />
+      <FeatureCard
+        title="Web Apps"
+        content="I design and develop amazing Websites that are easy to use, simple, fast and secure."
+        icon={<MdWeb color="#000" size={30} />}
+      />
     </Box>
   )
 }
