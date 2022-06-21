@@ -1,11 +1,10 @@
-import { ChakraProvider, LightMode, useColorMode } from "@chakra-ui/react"
+import { ChakraProvider } from "@chakra-ui/react"
+import Router from "next/router"
 import { useEffect } from "react"
 import theme from "../src/utils/theme"
 import "../styles/globals.css"
 
 function MyApp({ Component, pageProps }) {
-  const { colorMode, toggleColorMode } = useColorMode()
-
   useEffect(() => {
     localStorage.setItem("chakra-ui-color-mode", "light")
   }, [])

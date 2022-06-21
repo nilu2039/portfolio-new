@@ -40,6 +40,7 @@ const HomeProjects = ({ projectsRef }) => {
             title="CodeItOut"
             desc="A full-fledged online code editor."
             width={300}
+            tooltipLabel={"CodeItOut"}
             height={300}
           />
           <ProjectCard
@@ -47,6 +48,7 @@ const HomeProjects = ({ projectsRef }) => {
             href="https://github.com/nilu2039/flask_yt_downloader"
             title="YT-Downloader"
             desc="Youtube video dwonloader"
+            tooltipLabel={"YT Downloader"}
             width={300}
             height={260}
           />

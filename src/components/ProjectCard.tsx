@@ -10,6 +10,7 @@ interface ProjectCardProps {
   width: number
   height: number
   href?: string
+  tooltipLabel: string
 }
 
 const ProjectCard: React.FC<ProjectCardProps> = ({
@@ -19,6 +20,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   width,
   height,
   href,
+  tooltipLabel,
 }) => {
   const [isCardHovered, setIsCardHovered] = useState(false)
   return (
@@ -26,7 +28,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
       <Tooltip
         hasArrow
         noOfLines={2}
-        label={"CodeItOut"}
+        label={tooltipLabel}
         bg="black"
         color="white"
       >
