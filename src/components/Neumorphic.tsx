@@ -21,7 +21,12 @@ const Neumorphic: React.FC<NeumorphicProps> = ({
   href,
 }) => {
   return (
-    <a href={href} target="_blank" style={{ textDecoration: "none" }}>
+    <a
+      href={href}
+      target="_blank"
+      rel="noreferrer"
+      style={{ textDecoration: "none" }}
+    >
       <MotionBox
         p={p}
         background={background}

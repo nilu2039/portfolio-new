@@ -32,7 +32,12 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
         bg="black"
         color="white"
       >
-        <a href={href} target="_blank" style={{ textDecoration: "none" }}>
+        <a
+          href={href}
+          rel="noreferrer"
+          target="_blank"
+          style={{ textDecoration: "none" }}
+        >
           <MotionBox
             display="flex"
             flexDirection="column"
